@@ -10,8 +10,8 @@ package com.basics.java;
  * Java provides inbuilt support for multithreading with inbuilt api (Thread , Runnable, ThreadGroup)
  * Thread: Flow of execution or lightweight process. Separate flow of execution. Each thread has a separate jobs
  * Ways of defining thread:
- * - By extending thread class
- * - By implementing Runnable interface
+ * - By extending thread class, No chance of extending any other class. Missing the inheritance benefit
+ * - By implementing Runnable interface: Best way to define.
  * Thread scheduler: Responsible for order of execution for threads. Algorithm of thread scheduler varies from JVM. Hence order of execution cannot be guaranteed (Round Robin, FCFS, Shortest Job First etc) 
  * start method activities:
  *  - Register thread with thread scheduler
