@@ -1,4 +1,4 @@
-package com.basics.java;
+package com.basics.java.fundamentals.thread;
 
 /*
  * MAIN Thread is responsible to run main method

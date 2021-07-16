@@ -1,4 +1,4 @@
-package com.basics.java;
+package com.basics.java.fundamentals.datatypesAndIdentifiers;
 
 /*
  * In Java, every variable/expression should have some type.

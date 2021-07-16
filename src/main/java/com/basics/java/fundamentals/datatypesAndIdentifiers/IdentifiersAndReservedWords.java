@@ -1,4 +1,4 @@
-package com.basics.java;
+package com.basics.java.fundamentals.datatypesAndIdentifiers;
 /*
  * - Identifiers are names in java
  * - Identifiers can only have below characters:

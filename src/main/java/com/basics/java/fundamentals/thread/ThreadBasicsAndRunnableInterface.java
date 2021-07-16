@@ -1,4 +1,4 @@
-package com.basics.java;
+package com.basics.java.fundamentals.thread;
 
 /*
  * Thread can be defined by implementing Runnable interface directly
