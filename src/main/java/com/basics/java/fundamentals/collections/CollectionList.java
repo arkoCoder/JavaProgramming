@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
+
 /*
  * List:
  * - Duplicates are allowed.
@@ -39,6 +41,10 @@ import java.util.List;
  * No method in arrayList are non-synchronized
  * Multiple threads are allowed to operation arrayList object. Hence no thread safety
  * 
+ * 
+ * LinkedList:
+ * - Best option when you need to perform addition and deletion in middle of list
+ * - Internally it is doubly linked list
  *
  *  
  * */
@@ -50,13 +56,14 @@ public class CollectionList {
         ArrayList a2 = new ArrayList(1000); //capacity
        // ArrayList<E> a3 = new ArrayList<E>(Collection c); This is meant to convert any collection c to arraylist
         a1.add("Gopal");
-        a1.add(null);
+        //a1.add(null);
         a1.add(1);
         a1.add(1, "Heda");
         System.out.println(a1);
         
         List l1 = Collections.synchronizedList(a1); // Synchronized array list
-        
+        ImmutableList<String> list = ImmutableList.copyOf(a1);
+        list.add("Gopal"); // Unsupported Operation as list is immutable
 
     }
 }
