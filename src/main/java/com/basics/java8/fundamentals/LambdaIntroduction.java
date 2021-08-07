@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
  * Lambda expressions are not replacement for anonymous inner class
  * Anonymous inner class are the classes without names
  * Anonymous inner class are more powerful than lambda expressions as they can implment interfaces having multiple abstract methods
+ * Anonymous inner class can extend normal and abstract classes
  * */
 public class LambdaIntroduction {
 
