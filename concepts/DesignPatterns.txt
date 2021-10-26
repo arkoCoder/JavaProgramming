@@ -1,0 +1,15 @@
+Creational Design Patterns:
+- Concerned with the method of creating objects
+- Factory, Abstract Factory, Singleton, Prototype, Builder, Object Pool
+
+Structural Design Patterns:
+- Deals with the composition of classes & objects which form larger structures
+- Fascade, Bridge, Composite, Decorater, Adapter, Flyweight, Proxy, Filter
+
+Behavioural Design Patterns:
+- Deals with responsibility and interaction between objects
+- Strategy, Iterator, Mediator, Command, State, Observer, Template, Visitor
+
+JEE Design Patterns:
+- Concerned with providing solutions to Java EE based applications
+- MVC, Dependency Injection, DAO, Business Delegate, Intercepting, Service Locator, Transfer Object

@@ -1,0 +1,194 @@
+GOLang!
+
+Need for golang:
+-Strong and statically typed language:
+	- Strong means type of variable cannot change overtime.
+	- Static means all the variables must be defined at compile time
+
+-Key Features:
+	- Simplicity
+	- Fast compile time
+	- Garbage collected language. No need to manage own memory.
+	- Built in concurrency
+	- Compile to standalone binaries
+
+Setting up go env:
+GOROOT: tell the env to find go binaries
+GOPATH: path to tell GO to install the new packages we will need in the project
+
+commands to run Go program:
+- go run <path to go file>
+- go build  <package path containing main file> and then ./executable generated
+- go install <package path containing main file> and then the executable is generated in the bin folder. run the command bin/executable
+
+package:
+	- Every go code is structured in packages
+	- main is a special package which is entry point for ur code
+Variables:
+	- Can be declared in below formats
+		var i int
+		var i int = 23
+		i := 23
+	- variables with the same name cannot be declared in the same scope
+	- related variables can be clubbed under var{} section to have better and cleaner code
+	- variables with the innermost scope takes the precedence (Shadowing concept)
+	- Scope of variables:
+		- lower case first letter and package level - Scoped to the package
+		- upper case first letter and package level  - Globally visible
+		- variable defined in method is at block scope
+	- Acronyms should be all upperCase(eg: theURL) 
+	- variable name should be verbose i.e. as short as possible. Longer name should be given to variables with longer lives
+	- String is just an alias to stream of bytes. So while converting int to string, it looks for the unicode value at location mentioned in int
+	- strconv package is used t0 convert between string and numbers
+	- pascalCase(for global variables) or CamelCase is the naming convention for variables
+	- type conversion should be explicitly specified. (destinationType(variableName))
+	- Every time a variable is declared in go it has 0 value if not initialized. so if boolean variable is not initialized default value is false
+	
+Primitives:
+	- Boolean type (bool)
+	- Numeric types
+		- int (Signed integer)
+		- uint (Unsigned integer)
+		- float (float64 is the default). No mod operator , bitwise operators and bit shifting operators available for float
+		- complex (declation used for complex numbers). Has in-buuilt func to classify between real(real()) and imaginary(imag()) numbers. Has complex(complex(two numbers)) function to create a complex numbers
+	- Text types
+		- string. UTF8 characters. Aliases for bytes
+		- Strings are immutable. Values cannot be manipulated (Immutable means its value can not be manipulated between multiple threads)
+		- String needs to be converted to byte slices when need to be sent to other applications.
+		- rune. UTF32 characters declared using singles quotes. type aliases to int32
+
+Constants:
+	- const is the keyword used to constant variables
+	- values should be assigned such that they are calculated during compile time and not runtime
+	- constants can be shadowed
+	- Typed constant: (are immutable variables)
+		- need to define type of constant.
+	- Untyped constant: (are literals)
+		- need not to define type of the constant
+	- Enumerated constant:
+		- iota
+		- Can be used by creating a constant block of different constants
+		- arithmatic operations can be performed in the constant block to have proper offset
+		- "_" can be used as blank identifier as iota initializes to have 0 as value
+		
+Arrays and slices:
+	- Arrays:
+		- collection of same type of items
+		- The elements of array are contiguos in memory. Accessing elements is very fast
+		- fixed size which has to be known at compile time
+	- Slices:
+		- Slice is a projection of underlying array i.e. it is pointing to the first location of underlying array
+		- if one of the slice changes the data in array then the array content is changed
+		- slice has an capacity which defines the length of an underlying array
+		- Tricky to use as it performs operations on the same underlying array
+
+Maps and Structs:
+	Maps(are reference types refer pt 4 and 5 for explanation):
+		- generic key value pair type of datastructure
+		- return order of map in not guaranteed
+		- if key doesnt exist in map , then 0 is returned when tried to get the value of that key.This can thus be confusing and resulting program error. We can use ", ok " and put condition on the basis of value of ok(which is bool type and returns false if key doesnt exist)
+		- map points to the same underlying memory. hence need to be careful when deleting or updating the map as it may affect the existing map too.
+		- Multiple assignments refer to same underlying data
+	Structs (are value types refer pt 4):
+		- can club any type of data unlike other collections
+		- struct has positional syntax
+		- order is not mandatory
+		- Struct refers to independent data sets. Whenever value of one struct is copied to another struct, the value modification is the copied struct wont affect the actual struct from which it is copied
+		- Go doesnt support inheritance. It has something called "Composition(hasA relationship)" concept in it. Composition can be achieved by embedded structs.
+		- Tags in struct are a way to provide more description about fields in the struct.It is key value pair and are declared using "``"
+
+If and Switch Statements:
+	If Statements:
+		- Should always have curly braces defining the condition under if statement( even for single line condition)
+		- supports logical operators for condition matching
+		- Short Circuiting: Go doesnt evaluate the second parameter if:
+			- in the "||" condition if the first condition evaluates to true
+			- in the "&&" condition if the first condition evaluates to false
+	Switch Statements:
+		- Multiple conditions can be clubbed into single case
+		- Test cases must be unique
+		- break keyword is already implied in golang
+		- "fallthrough" is a keyword used to pass onto the next case.It is logicless and will always execute the next case irrespective of the condition
+		- (type) can be used to put switch case on the types of the variable
+		- break can be explicitly used to not execute the statements below break
+
+Loops:
+	For:
+		- break stops the execution of the immediate for loop and continue iterates it to next counter value
+		- Labels can be used to specify the breakpoint to break statements
+		- for-range is used to iterate over collections in go
+
+Defer-Panic-Recover:
+	Defer:
+		- Used to delay execution of statement until function ends
+		- Executes in LIFO pattern
+		- Most common ex is to allow open and close resources side-by-side 
+		- Defer statement doesnt execute until the function itself executes
+	Panic:
+		- Basically are the way of throwing exceptions
+		- Panics happen after defer statements. Order of execution is func call -> func end -> defer -> panic -> return value
+		- Deferred functions will still fire in case of panic
+	Recover:
+		- Used to recover from panics
+		- only useful in deffered functions
+		- Current function having panic will terminate but higher func having this method call will execute if you call recover
+		
+Pointers:
+	- Pointers are used to point at the address of specific memory locations for variables
+	- Dereferencing a pointer means fetching the value from the address to which the pointer is pointing to
+	- Arithmetic operations on pointers are forbidden in Golang
+	- New keyword can not be used with object initialization syntax
+	- Zero value for pointer is nil. If a pointer in not initialized , by default it will be initialized to nil
+	- Complex types are automatically de-referenced(eg. struct)
+	- Slices and maps contain internal pointers, so copies to same underlying data
+	- Implicit dereferencing of pointers works with complex data types
+	
+Functions:
+	- Starts with func keyword
+	- Function names follows the same pattern as any other variableName
+	- We can pass pointer for the large data structures which will improve the performance but however we need to be careful in changing the values as it might afect the underlying data as well
+	- Variadic paramaeters should always be the last aprameters to be sent out. Also there can be only one variadic parameter for a func
+	- Golang provides a way to return pointers.(Rare and Fishy.). So when a pointer is returned from a func, it is promoted to shared memory i.e. heap memory of the computer.Hence it wont get cleared on execution of the method from the execution stack memory(local memory)
+	- Golang provides a way of returning named result parameters
+	- Anonymous functions
+	- Methods: Func executing in a known context
+	
+Interfaces:
+	- Important for maintainable and scalable features for Golang
+	- Interfaces are implicitly implemented in golang by providing them as method signatures
+	- Interfaces can be composed as well by embedding the interfaces
+	- Empty interfaces: interface defined on the fly with no methods in it. Can be used to check the type of vars
+	- Best practices for use interfaces:
+		- Use many small interfaces
+		- single method interfaces are powerful and flexible
+		- Dont export interfaces for types that will be consumed
+		- Do export interfaces for types that will be used by packages
+		- Design functions and methods to receive interfaces whenever possible
+
+Concurrent Programming
+GoRoutines:
+	- Green threads: Abstraction of the thread called as goroutine
+	- goRoutine provides you the lightweight abstraction for threads
+	- Closure: Using this, the goRoutines do have access to the variables outside it's scope> Generally not a good idea to do this as this would create race conditions in the application
+	- WaitGroups:
+		- Used to synchronize multiple wait groups together
+	- Mutexes:
+		- Lock an application gonna honour
+	- By default go will use CPU threads equal to available cores. Can be changed at runtime using GOMAXPROCS
+	- GOMAXPROCS: gives number of threads
+	- Best Practices:
+		- Dont create goRoutines in libraries. Let consumer handle the concurrency
+		- When creating a goRoutine, know how it will end. Avoid subtle memory leaks
+		- Check for race condition at compile time(-race flags is useful to find out race condition is the code)
+
+Channels:
+	- Designed to synchronize data between different GoRoutines
+	- Channels are strongly data typed
+	- By default channels are bidirectional constructs
+	- By dafault channel type is unbuffered i.e. one message can be present in channel at one time
+	- Buffered channels: Creates a data aquistion store to accumulate data into channels
+	- Once the channel is closed no more messages can be passed onto it
+	- ,ok can be used to check channel is closed or not on the receiving end
+	- select statements
+		- Allows go routine to monitor several channels at once
+		

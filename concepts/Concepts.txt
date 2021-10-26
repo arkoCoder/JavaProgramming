@@ -1,0 +1,42 @@
+Java8 (generics, Lambda, Functional Interface, Concurency, streams (Predicate, Bi-Predicate), SOLID Design Principles, Serial Stream, Lazy stream)
+Springboot
+Rest API: Rest must be strong
+No SQL: Couch DB
+Messaging Broker : Kafka, rabbit , database
+Cloud Deplyment, Cloud Provisioning
+Rest Principles. Open API Spec, Hateos, Fine Grain Vs Coarse Grain API’s in business
+Design Paterns
+Multithreading :- Fork & Joins, Sync, Executor Framework, Blocking Q, latch, Barrier, Thread Local
+
+
+
+Core Java
+- OOPs, classes, interfaces, inner classes, Generics etc
+- Serialization, custom serialization
+- Collections (Linked HashSet, HashMap, TreeMap etc)
+- Multithreading (volatile, ThreadPool, Reentrant Locks, Concurrent Hashmaps, Semaphores, Cyclic Barrier, Countdownlatches, Executors Framework, Synchronization etc)
+
+Data Structures
+- Lists, Trees, Graphs, Queues, Stacks etc
+- Problem Solving, Algorithms, Time complexity analysis
+
+Design
+- Solid Design principles and data structures in context of some real time problem
+
+SQL
+- Basic SQL Queries
+- DB modelling, Query Tuning, Indexes, Qry Plans etc
+
+Spring + Hibernate
+- Spring Core, Dependency Injection, Transaction Management etc
+- Associations- one-to-many , many-to-one, many-to-many.
+- fetching strategies.
+- n+1 problem
+- Transaction management.
+- L2 cache, query cache.
+
+Messaging services
+- Jms, active mq, rabbit mq
+
+Soft Skills
+- Communication Skills, Adaptable, Never say die attitude
