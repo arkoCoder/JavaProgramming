@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * compareTo is applicable to string objects for alphabetical order
  * Lambda expressions are not replacement for anonymous inner class
  * Anonymous inner class are the classes without names
- * Anonymous inner class are more powerful than lambda expressions as they can implment interfaces having multiple abstract methods
+ * Anonymous inner class are more powerful than lambda expressions as they can implement interfaces having multiple abstract methods
  * Anonymous inner class can extend normal and abstract classes
  * */
 public class LambdaIntroduction {
@@ -42,7 +42,7 @@ public class LambdaIntroduction {
         //(a, b) -> System.out.println("Sum is " + (a+b)); Compiler can implicitly guess the data type
         //n -> n*n; If curly braces are not used the no need to specify return statement but if curly braces are specified then we need to add return statement
         //s -> System.out.println(s.length());
-        
+
         
         InterfaceImplementer iClass = new InterfaceImplementer();
         iClass.testDisplay("Woah");
